@@ -5,19 +5,21 @@ const { argv } = require("node:process");
 
 // tables trainers, types, pokemon
 const SQL = `
-DROP TABLE users;
+DROP TABLE IF EXISTS messages;
+DROP VIEW IF EXISTS fullname;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   firstname VARCHAR ( 255 ),
   lastname VARCHAR ( 255 ),
-  username VARCHAR ( 255 ),
+  email VARCHAR ( 255 ),
   password VARCHAR ( 255 ),
   membershipstatus VARCHAR ( 255 )
 );
 
 CREATE VIEW fullname AS
-  SELECT id, firstname || lastname AS fullname, username, password, membershipstatus
+  SELECT id, firstname || lastname AS fullname, email, password, membershipstatus
   FROM users;
 
 CREATE TABLE messages (

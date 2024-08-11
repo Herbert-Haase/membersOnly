@@ -7,12 +7,16 @@
   </head>
   <body>
     <h1>Signup</h1>
-    <form action="/signup" method="post" autocomplete="on">
+    <%- include("partials/error") %>
+    <form action="/signup" method="POST">
       <input
         type="text"
         name="firstname"
         id="firstname"
+        value="<%= locals.user ? locals.user.firstname : '' %>"
         placeholder="firstname"
+        minlength="1"
+        maxlength="10"
         autofocus
         required
       />
@@ -20,21 +24,36 @@
         type="text"
         name="lastname"
         id="lastname"
+        value="<%= locals.user ? locals.user.lastname : '' %>"
         placeholder="lastname"
+        minlength="1"
+        maxlength="10"
         required
       />
       <input
         type="email"
-        name="username"
-        id="username"
+        name="email"
+        id="email"
+        value="<%= locals.user ? locals.user.email : '' %>"
         placeholder="email"
         required
       />
       <input
-        type="text"
+        type="password"
         name="password"
         id="password"
+        value="<%= locals.user ? locals.user.password : '' %>"
         placeholder="password"
+        minlength="5"
+        required
+      />
+      <input
+        type="password"
+        name="repeatpassword"
+        id="repeatpassword"
+        value="<%= locals.user ? locals.user.password : '' %>"
+        placeholder="repeat password"
+        minlength="5"
         required
       />
       <button type="submit">Submit</button>
