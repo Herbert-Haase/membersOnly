@@ -18,8 +18,8 @@ CREATE TABLE users (
   membershipstatus VARCHAR ( 255 )
 );
 
-CREATE VIEW fullname AS
-  SELECT id, firstname || lastname AS fullname, email, password, membershipstatus
+CREATE VIEW usersfullname AS
+  SELECT id, firstname || lastname AS fullname, firstname, lastname, email, password, membershipstatus
   FROM users;
 
 CREATE TABLE messages (

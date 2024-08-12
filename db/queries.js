@@ -7,6 +7,14 @@ async function createUser(firstName, lastName, email, password) {
   );
 }
 
+async function getUser(email) {
+  const { rows } = await pool.query(
+    "SELECT * FROM usersfullname WHERE email = $1",
+    [email]
+  );
+  return rows[0];
+}
+
 async function getUsers() {
   const users = await pool.query("SELECT * FROM users");
   return users;
@@ -14,5 +22,6 @@ async function getUsers() {
 
 module.exports = {
   createUser,
+  getUser,
   getUsers,
 };
