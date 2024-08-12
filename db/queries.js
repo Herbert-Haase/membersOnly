@@ -20,8 +20,16 @@ async function getUsers() {
   return users;
 }
 
+async function updateMembership(email) {
+  await pool.query(
+    "UPDATE users SET membershipstatus = 'exclusive' WHERE email = $1",
+    [email]
+  );
+}
+
 module.exports = {
   createUser,
   getUser,
   getUsers,
+  updateMembership,
 };

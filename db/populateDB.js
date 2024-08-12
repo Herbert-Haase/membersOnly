@@ -6,7 +6,7 @@ const { argv } = require("node:process");
 // tables trainers, types, pokemon
 const SQL = `
 DROP TABLE IF EXISTS messages;
-DROP VIEW IF EXISTS fullname;
+DROP VIEW IF EXISTS usersfullname;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
